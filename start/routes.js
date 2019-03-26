@@ -29,3 +29,16 @@ Route.get('/posts/:id', ({
 }) => {
   return `You're watching post ${params.id}.`
 })
+
+
+Route.patch('/posts/:id', ({
+  params
+}) => {
+  return `Post ${params.id} has been updated.`
+})
+
+Route.delete('/posts/:id', ({
+  params
+}) => {
+  return `Post ${params.id} has been removed.`
+})
