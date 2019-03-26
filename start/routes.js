@@ -52,3 +52,12 @@ Route.get('/users', ({
     }
   })
   .formats(['json', 'html'], true)
+
+/**
+ * 为users和posts统一加上前缀admin
+ */
+Route.group(() => {
+    Route.get('users', () => 'Manage users')
+    Route.get('posts', () => 'Manage posts')
+  })
+  .prefix('admin')
