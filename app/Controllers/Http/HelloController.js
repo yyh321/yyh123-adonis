@@ -2,9 +2,14 @@
 
 class HelloController {
   render({
-    request
+    request,
+    view
   }) {
-    return `hello ~ ${request.input('name')}`
+    const name = request.input('name')
+
+    return view.render('hello', {
+      name
+    })
   }
 }
 
