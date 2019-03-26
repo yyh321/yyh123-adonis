@@ -16,7 +16,15 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+Route.on('/').render('welcome')
+
 Route.resource('posts', 'PostController')
 // .except(['index'])
 // .only(['index','show'])
 // .apiOnly()
+
+/**
+ * 命名路由,
+ */
+Route.get('/list-of-users', () => 'List of users.')
+  .as('users.index')
