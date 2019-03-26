@@ -61,3 +61,10 @@ Route.group(() => {
     Route.get('posts', () => 'Manage posts')
   })
   .prefix('admin')
+
+/**
+ * 为单页应用定义路由，要放在最后
+ */
+Route.any('*', ({
+  view
+}) => view.render('welcome'))
