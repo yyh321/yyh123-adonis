@@ -28,3 +28,27 @@ Route.resource('posts', 'PostController')
  */
 Route.get('/list-of-users', () => 'List of users.')
   .as('users.index')
+
+/**
+ * formats,第二个参数为true表示请求格式只能是json或者html
+ */
+Route.get('/users', ({
+    request
+  }) => {
+    switch (request.format()) {
+      case 'json':
+        return [{
+            name: 'yuyunhao'
+          },
+          {
+            name: 'yyh123'
+          }
+        ]
+      default:
+        return `
+        - hello
+        - world
+      `
+    }
+  })
+  .formats(['json', 'html'], true)
