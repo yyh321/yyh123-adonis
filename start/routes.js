@@ -15,6 +15,7 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
+const Database = use('Database')
 
 Route.on('/').render('welcome')
 // Route.get('/hello', ({
@@ -24,3 +25,6 @@ Route.on('/').render('welcome')
 // })
 
 Route.get('/hello', 'HelloController.render')
+Route.get('/posts', async () => {
+  return await Database.table('posts').select('*')
+})
