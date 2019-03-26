@@ -17,10 +17,5 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
-// Route.get('/hello', ({
-//   request
-// }) => {
-//   return `hello ~ ${request.input('name')} `
-// })
 
-Route.get('/hello', 'HelloController.render')
+Route.get('/posts', () => 'List of posts.')
