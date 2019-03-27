@@ -121,7 +121,7 @@ const delay = (data, time) => {
 /**
  * 获取异步数据
  */
-Route.get('/posts', async ({
+Route.get('/posts9', async ({
   request,
   response
 }) => {
@@ -132,3 +132,26 @@ Route.get('/posts', async ({
 
   return data
 })
+
+Route.get('/list-of-posts1', ({
+  response
+}) => {
+  // true:代表重定向后，如果有查询参数，也会将参数带上，
+  response.redirect('list-of-posts', true, 301)
+})
+
+
+Route.get('/list-of-food-posts', ({
+  response
+}) => {
+  // true:代表重定向后，如果有查询参数，也会将参数带上，
+  response.route('list-of-posts', {
+    category: 'food'
+  })
+})
+
+
+Route.get('/posts/:category?', ({
+    params
+  }) => `List of posts ${params.category || 'defaultValue'} posts. `)
+  .as('list-of-posts')
