@@ -100,7 +100,7 @@ Route.get('/posts7', ({
 /**
  * 设置cookie
  */
-Route.get('/posts', ({
+Route.get('/posts8', ({
   request,
   response
 }) => {
@@ -108,4 +108,27 @@ Route.get('/posts', ({
   // return request.cookies()
   response.clearCookie('theme') // 清除cookie
   return request.cookie('theme', 'light') // 如果没有theme，则用light作为默认值
+})
+
+const delay = (data, time) => {
+  return new Promise((resole, reject) => {
+    setTimeout(() => {
+      resole(data)
+    }, time)
+  })
+}
+
+/**
+ * 获取异步数据
+ */
+Route.get('/posts', async ({
+  request,
+  response
+}) => {
+  const data = await delay(
+    'List of posts',
+    3000
+  )
+
+  return data
 })
