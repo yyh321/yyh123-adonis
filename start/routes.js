@@ -21,7 +21,7 @@ Route.on('/').render('welcome')
 /**
  * 获取请求查询参数，用request.get()方法
  */
-Route.get('/posts', ({
+Route.get('/posts0', ({
   request
 }) => request.get())
 
@@ -62,7 +62,37 @@ Route.post('/posts5', ({
 
 /**
  * 获取请求中的集合数据
+ * title[0] = 'apple'
+ * content[0] = '🍎'
+ * title[1] = 'banana'
+ * content[1] = '🍌'
  */
 Route.post('/posts', ({
   request
 }) => request.collect(['title', 'content']))
+
+/**
+ * 获取请求头部信息
+ */
+Route.get('/posts6', ({
+  request
+}) => request.headers())
+
+/**
+ * 获取指定的头部信息
+ */
+// Route.get('/posts', ({
+//   request
+// }) => request.header('user-agent'))
+
+/**
+ * 设置响应头信息
+ */
+Route.get('/posts', ({
+  request,
+  response
+}) => {
+  // response.header('Content-Type', 'text/plain')
+  response.type('text/plain')
+  return '<h1> List of posts </h1>'
+})
