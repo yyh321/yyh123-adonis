@@ -88,11 +88,24 @@ Route.get('/posts6', ({
 /**
  * 设置响应头信息
  */
-Route.get('/posts', ({
+Route.get('/posts7', ({
   request,
   response
 }) => {
   // response.header('Content-Type', 'text/plain')
   response.type('text/plain')
   return '<h1> List of posts </h1>'
+})
+
+/**
+ * 设置cookie
+ */
+Route.get('/posts', ({
+  request,
+  response
+}) => {
+  response.cookie('theme', 'dark')
+  // return request.cookies()
+  response.clearCookie('theme') // 清除cookie
+  return request.cookie('theme', 'light') // 如果没有theme，则用light作为默认值
 })
