@@ -18,53 +18,9 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.resource('posts', 'PostController')
-// .except(['index'])
-// .only(['index','show'])
-// .apiOnly()
-
 /**
- * 命名路由,
+ * 获取请求查询参数，用request.get()方法
  */
-Route.get('/list-of-users', () => 'List of users.')
-  .as('users.index')
-
-/**
- * formats,第二个参数为true表示请求格式只能是json或者html
- */
-Route.get('/users', ({
-    request
-  }) => {
-    switch (request.format()) {
-      case 'json':
-        return [{
-            name: 'yuyunhao'
-          },
-          {
-            name: 'yyh123'
-          }
-        ]
-      default:
-        return `
-        - hello
-        - world
-      `
-    }
-  })
-  .formats(['json', 'html'], true)
-
-/**
- * 为users和posts统一加上前缀admin
- */
-Route.group(() => {
-    Route.get('users', () => 'Manage users')
-    Route.get('posts', () => 'Manage posts')
-  })
-  .prefix('admin')
-
-/**
- * 为单页应用定义路由，要放在最后
- */
-Route.any('*', ({
-  view
-}) => view.render('welcome'))
+Route.get('/posts', ({
+  request
+}) => request.get())
