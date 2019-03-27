@@ -56,6 +56,13 @@ Route.post('/posts4', ({
 /**
  * 获取指定参数的值，如果获取不到，第二个参数为默认值
  */
-Route.post('/posts', ({
+Route.post('/posts5', ({
   request
 }) => request.input('status', 'defaultValue'))
+
+/**
+ * 获取请求中的集合数据
+ */
+Route.post('/posts', ({
+  request
+}) => request.collect(['title', 'content']))
