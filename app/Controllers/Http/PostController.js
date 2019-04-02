@@ -6,7 +6,11 @@ class PostController {
     const user = {
       name: 'yyh123'
     }
-    return view.render('post.index', { pageTitle, user })
+    const entities = [
+      { id:1,title:'Lemon', content: '🍋'},
+      { id:2,title:'Watermelon', content: '🍉'}
+    ]
+    return view.render('post.index', { pageTitle, user, entities })
   }
 
 
