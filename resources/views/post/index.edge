@@ -1,1 +1,7 @@
-<h1>Posts yyh123</h1>
+<h1> {{{ pageTitle || 'Untitle' }}} </h1>
+
+@if(user.name)
+{{ user.name }}
+@else
+login/sigin
+@endif

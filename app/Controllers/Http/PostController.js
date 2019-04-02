@@ -2,7 +2,11 @@
 
 class PostController {
   index({ view }) {
-    return view.render('post.index')
+    const pageTitle = 'List of <i>posts</i>'
+    const user = {
+      name: 'yyh123'
+    }
+    return view.render('post.index', { pageTitle, user })
   }
 
 
