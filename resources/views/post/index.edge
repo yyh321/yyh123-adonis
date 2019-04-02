@@ -1,13 +1,13 @@
-<h1> {{{ pageTitle || 'Untitle' }}} </h1>
+@layout('layouts.main')
+@section('header')
+  <h1>{{pageTitle || 'Untitle'}}</h1>
+@endsection
 
-@each(entity in entities)
-  <small>
-    {{$loop.index + 1}}
-    first: <i>{{$loop.first}}</i>
-    last: <i>{{$loop.last}}</i>
-    total: <i>{{$loop.total}}</i>
-    isOdd: <i>{{$loop.isOdd}}</i>
-    isEven: <i>{{$loop.isEven}}</i>
-  </small>
-  <div> {{entity.title}}: {{entity.content}} </div>
-@endeach
+@section('content')
+  @each(entity in entities)
+    <div>
+      <small> {{$loop.index + 1}}</small>
+      {{entity.title}}:{{entity.content}}
+    </div>
+  @endeach
+@endsection
